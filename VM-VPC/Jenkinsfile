@@ -3,25 +3,19 @@ pipeline {
 
 
     environment {
-    SVC_ACCOUNT_KEY = credentials('terraform-auth')
+    SVC_ACCOUNT_KEY = credentials('dev-auth')
   }
      
     stages {
-        stage ('checkout'){
-            steps {
-                git branch: 'main', url: 'https://github.com/ishaqmdgcp/gcp-devops.git'
-            }
-        }
       
 
-		stage('Set Terraform path') {
+	stage('Set Terraform path') {
             steps {
                 script {
                     def tfHome = tool name: 'Terraform'
                     env.PATH = "${tfHome}:${env.PATH}"
                 }
                 sh 'echo $SVC_ACCOUNT_KEY | base64 -d > ./VM-VPC/terraform.json'
-		sh 'pwd'
                 sh 'terraform --version'               
                
             }
@@ -40,9 +34,7 @@ pipeline {
 		 steps {  
 			  dir('VM-VPC')
 			 {
-                //sh 'terraform $TF_ACTION $TF_APPROVE'
-				 sh 'terraform plan'
-				 //sh 'terraform destroy --auto-approve'
+                sh 'terraform $TF_ACTIONS $TF_APPROVE'
 			 }
 		 }
 	}
