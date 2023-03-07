@@ -1,5 +1,5 @@
 provider "google" {
-  project = "midevop"
+  project = "mi-dev-env"
   credentials = file("terraform.json")
   region  = "europe-west2"
   zone    = "europe-west2-a"
@@ -10,12 +10,12 @@ resource "google_compute_network" "vpc_network" {
 
 resource "google_compute_instance" "vm_instance" {
   name = "test-vm-${count.index}"
-  count        = 1
+  count        = 2
   machine_type = "f1-micro"
 
   boot_disk {
     initialize_params {
-      image = "debian-cloud/debian-9"
+      image = "debian-10-buster-v20221102"
     }
   }
 
