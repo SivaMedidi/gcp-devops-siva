@@ -30,4 +30,8 @@ resource "google_compute_instance" "vm-instance1" {
 }
 
 
+resource "google_compute_network" "vpc_network" {
+  name = "terraform-network"
+}
+
 
