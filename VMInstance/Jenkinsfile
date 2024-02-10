@@ -3,7 +3,7 @@ pipeline {
 
 
     environment {
-    SVC_ACCOUNT_KEY = credentials('dev-auth')
+    SVC_ACCOUNT_KEY = credentials('GCP-SECRET')
   }
      
     stages {
