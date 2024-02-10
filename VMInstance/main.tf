@@ -1,16 +1,17 @@
-# This is the provider used to spin up the gcloud instance
+# This is the provider used to spin up the VM instance
 provider "google" {
  
-  project = "mi-dev-env"
+  project = "miproject-dev"
   credentials = file("terraform.json")
-  region  = "us-east1"
+  region  = "us-central1"
   
 }
 
-resource "google_compute_instance" "vm-instance" {
-  name         = "test"
-  machine_type = "f1-micro"
-  zone         = "us-east1-b"
+resource "google_compute_instance" "vm-instance1" {
+  name         = "myfirstvm"
+  machine_type = "n1-standard-1"
+  zone         = "us-central1-a"
+  tags = ["web-app"]
 
 
   boot_disk {
@@ -27,5 +28,6 @@ resource "google_compute_instance" "vm-instance" {
     }
   }
 }
+
 
 
