@@ -1,9 +1,6 @@
 pipeline {
     agent any
 
-
-    environment {
-    SVC_ACCOUNT_KEY = credentials('GCP-SECRET')
   }
      
     stages {
@@ -15,7 +12,6 @@ pipeline {
                     def tfHome = tool name: 'Terraform'
                     env.PATH = "${tfHome}:${env.PATH}"
                 }
-                sh 'echo $SVC_ACCOUNT_KEY | base64 -d > ./VMInstance/terraform.json'
                 sh 'terraform --version'               
                
             }
