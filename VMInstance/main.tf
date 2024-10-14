@@ -1,8 +1,7 @@
 # This is the provider used to spin up the VM instance
 provider "google" {
  
-  project = "miproject-dev"
-  credentials = file("terraform.json")
+  project = "mi-cloud-dev"
   region  = "us-central1"
   
 }
