@@ -8,7 +8,7 @@ provider "google" {
 
 resource "google_compute_instance" "vm-instance1" {
   name         = "myfirstvm"
-  machine_type = "n1-standard-1"
+  machine_type = "e2-medium"
   zone         = "us-central1-a"
   tags = ["web-app"]
 
