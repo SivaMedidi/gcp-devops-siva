@@ -31,7 +31,8 @@ pipeline {
 		 steps {  
 			  dir('VMInstance')
 			 {
-		 sh 'terraform $TF_ACTIONS $TF_APPROVE'
+		 sh 'terraform plan'		 
+		 sh 'terraform $TF_ACTIONS --auto-approve'
 				
 			 }
 		 }
