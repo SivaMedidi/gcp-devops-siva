@@ -1,5 +1,5 @@
 provider "google" {
-  project = "mi-cloud-dev"
+  project = "gcp-learners-123"
   region  = "us-central1"
 }
 resource "google_compute_network" "vpc_network" {
